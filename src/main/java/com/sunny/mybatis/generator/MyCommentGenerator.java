@@ -79,21 +79,6 @@ public class MyCommentGenerator extends DefaultCommentGenerator {
         field.addJavaDocLine(" */");
     }
 
-//    @Override
-//    public void addClassComment(InnerClass innerClass, IntrospectedTable introspectedTable) {
-//        if (suppressAllComments) {
-//            return;
-//        }
-//        innerClass.addJavaDocLine("/**");
-//        innerClass.addJavaDocLine(" * @Title " + introspectedTable.getFullyQualifiedTable() + "表的实体类");
-//        //innerClass.addJavaDocLine(" * @Description "+introspectedTable.getFullyQualifiedTable().getRemarks());
-//        innerClass.addJavaDocLine(" * @version 1.0");
-//        innerClass.addJavaDocLine(" * @Author fendo");
-//        innerClass.addJavaDocLine(" * @Date " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
-//        innerClass.addJavaDocLine(" */");
-//
-//    }
-
     @Override
     public void addClassComment(InnerClass innerClass, IntrospectedTable introspectedTable) {
         if (suppressAllComments) {
@@ -112,9 +97,6 @@ public class MyCommentGenerator extends DefaultCommentGenerator {
         sb.append(currentDateStr);
         addJavadocTag(innerClass, false);
         innerClass.addJavaDocLine(" */");
-
-
-
     }
 
 
@@ -201,15 +183,12 @@ public class MyCommentGenerator extends DefaultCommentGenerator {
 
     @Override
     public void addComment(XmlElement xmlElement) {
-
         xmlElement.addElement(new TextElement("<!-- Don't change -->"));
-        return;
     }
 
     @Override
     public void addRootComment(XmlElement xmlElement) {
         //xmlElement.addElement(new TextElement("<!-- sunny -->"));
-        return;
     }
 
     /**
