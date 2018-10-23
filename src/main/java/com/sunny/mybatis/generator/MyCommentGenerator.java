@@ -1,5 +1,6 @@
 package com.sunny.mybatis.generator;
 
+import org.mybatis.generator.api.CommentGenerator;
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.dom.java.*;
@@ -21,7 +22,7 @@ import static org.mybatis.generator.internal.util.StringUtility.isTrue;
  * @date: 2018-06-09 15:27
  * @des:
  */
-public class MyCommentGenerator extends DefaultCommentGenerator {
+public class MyCommentGenerator implements CommentGenerator {
     private Properties properties;
     private Properties systemPro;
     private boolean suppressDate;
@@ -84,6 +85,25 @@ public class MyCommentGenerator extends DefaultCommentGenerator {
         if (suppressAllComments) {
             return;
         }
+        StringBuilder sb = new StringBuilder();
+        innerClass.addJavaDocLine("/**");
+        sb.append(" * ");
+        sb.append(" * ");
+        sb.append(introspectedTable.getFullyQualifiedTable());
+        innerClass.addJavaDocLine(sb.toString().replace("\n", " "));
+        sb.setLength(0);
+        sb.append(" * @author ");
+        sb.append(systemPro.getProperty("user.name"));
+        sb.append(" ");
+        sb.append(currentDateStr);
+        addJavadocTag(innerClass, false);
+        innerClass.addJavaDocLine(" */");
+    }
+
+    @Override
+    public void addClassComment(InnerClass innerClass, IntrospectedTable introspectedTable, boolean markAsDoNotDelete) {
+
+
         StringBuilder sb = new StringBuilder();
         innerClass.addJavaDocLine("/**");
         sb.append(" * ");

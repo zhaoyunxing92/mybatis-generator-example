@@ -25,7 +25,7 @@ public class StartUp {
             //D:\code\java\ccclubs-ntsp-open-api\src\main\resources\generatorConfig.xml
             List<String> warnings = new ArrayList<String>();
             boolean overwrite = true;
-            String file = "D:\\code\\java\\generator\\core\\generator-example\\src\\main\\resources\\generatorConfig.xml";
+            String file = "D:\\code\\java\\generator-example\\src\\main\\resources\\generatorConfig.xml";
             ConfigurationParser cp = new ConfigurationParser(warnings);
             Configuration config = cp.parseConfiguration(new File(file));
             DefaultShellCallback callback = new DefaultShellCallback(overwrite);
