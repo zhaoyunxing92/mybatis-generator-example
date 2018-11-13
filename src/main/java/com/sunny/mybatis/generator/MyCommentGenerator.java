@@ -8,7 +8,6 @@ import org.mybatis.generator.api.dom.xml.TextElement;
 import org.mybatis.generator.api.dom.xml.XmlElement;
 import org.mybatis.generator.config.MergeConstants;
 import org.mybatis.generator.config.PropertyRegistry;
-import org.mybatis.generator.internal.DefaultCommentGenerator;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

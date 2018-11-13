@@ -61,12 +61,10 @@ public class InterFaceExtendsPlugin extends PluginAdapter {
     public boolean clientGenerated(Interface interfaze, TopLevelClass topLevelClass,
                                    IntrospectedTable introspectedTable) {
 
-        //introspectedTable.getContext().getJavaClientGeneratorConfiguration().getTargetProject()
         //mapper 文件生成过一次就生成
         if (hasInterfaceMapperFile(introspectedTable.getContext().getJavaClientGeneratorConfiguration().getTargetProject(), interfaze.getType().getPackageName(), interfaze.getType().getShortName())) {
             return false;
         }
-        //C:\code\java\ccclubs-ntsp-open-api\src\main\java\com\sunny\boot\cherrytomato\vehicleState\mapper\TbStateMapper.java
         // 获取实体类
         FullyQualifiedJavaType entityType = new FullyQualifiedJavaType(introspectedTable.getBaseRecordType());
         // import接口

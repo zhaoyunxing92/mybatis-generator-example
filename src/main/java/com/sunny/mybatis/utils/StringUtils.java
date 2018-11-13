@@ -3,8 +3,6 @@
  */
 package com.sunny.mybatis.utils;
 
-import java.util.regex.Pattern;
-
 /**
  * @author zhaoyunxing92
  * @class: com.sunny.mybatis.utils.StringUtils
