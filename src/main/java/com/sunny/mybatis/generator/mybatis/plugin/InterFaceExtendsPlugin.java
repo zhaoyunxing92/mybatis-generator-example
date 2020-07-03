@@ -9,10 +9,9 @@ import org.mybatis.generator.api.dom.java.*;
 
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
-import java.util.StringTokenizer;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author zhaoyunxing
@@ -124,16 +123,22 @@ public class InterFaceExtendsPlugin extends PluginAdapter {
             topLevelClass.addImportedType(baseModel);
             topLevelClass.setSuperClass(new FullyQualifiedJavaType(baseModel + "<" + primaryKeyType + ">"));
         }
-
-
+        List<Field> fields = topLevelClass.getFields();
+        excludeRepetitionFields(baseModel, fields);
         return super.modelBaseRecordClassGenerated(topLevelClass, introspectedTable);
     }
 
     /**
      * 排除重复的字段
      */
-    private void excludeRepetitionFields() {
-
+    private void excludeRepetitionFields(String className, List<Field> fields) {
+        try {
+            java.lang.reflect.Field[] declaredFields = Class.forName(className).getDeclaredFields();
+            List<String> dFields = Stream.of(declaredFields).map(java.lang.reflect.Field::getName).collect(Collectors.toList());
+            fields.removeIf( dFields::contains);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
