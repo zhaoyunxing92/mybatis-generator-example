@@ -112,12 +112,12 @@ public class InterFaceExtendsPlugin extends PluginAdapter {
      * @return
      */
     @Override
-    public boolean modelBaseRecordClassGenerated(TopLevelClass topLevelClass,
-                                                 IntrospectedTable introspectedTable) {
+    public boolean modelBaseRecordClassGenerated(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         addSerialVersionUID(topLevelClass, introspectedTable);
+        //topLevelClass.getFields().removeIf();
         // 获取表第一个字段作为主键类型
         //        primaryKeyType = topLevelClass.getFields().get(0).getType().getShortName();
-        // 多组件情况下，值去第一个
+        // 多组件情况下，只取第一个
         primaryKeyType = introspectedTable.getPrimaryKeyColumns().get(0).getFullyQualifiedJavaType().getShortName();
         if (!StringUtils.isEmpty(baseModel)) {
             // topLevelClass.
@@ -125,7 +125,15 @@ public class InterFaceExtendsPlugin extends PluginAdapter {
             topLevelClass.setSuperClass(new FullyQualifiedJavaType(baseModel + "<" + primaryKeyType + ">"));
         }
 
+
         return super.modelBaseRecordClassGenerated(topLevelClass, introspectedTable);
+    }
+
+    /**
+     * 排除重复的字段
+     */
+    private void excludeRepetitionFields() {
+
     }
 
     /**
@@ -179,3 +187,4 @@ public class InterFaceExtendsPlugin extends PluginAdapter {
         topLevelClass.addField(field);
     }
 }
+

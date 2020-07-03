@@ -189,15 +189,12 @@ public class MyCommentGenerator implements CommentGenerator {
     @Override
     public void addJavaFileComment(CompilationUnit compilationUnit) {
         /**
-         * Copyright(C) 2017 Hangzhou Fugle Technology Co., Ltd. All rights reserved.
+         * Copyright(C) 2017 Hangzhou zhaoyunxing Technology Co., Ltd. All rights reserved.
          *
          */
         compilationUnit.addFileCommentLine("/**");
-        StringBuilder sb = new StringBuilder();
-        sb.append(" * Copyright(C) " + currentYear + " Hangzhou ccclubs Technology Co., Ltd. All rights reserved.");
-        compilationUnit.addFileCommentLine(sb.toString());
+        compilationUnit.addFileCommentLine(" * Copyright(C) " + currentYear + " Hangzhou zhaoyunxing Technology Co., Ltd. All rights reserved.");
         compilationUnit.addFileCommentLine(" */");
-        return;
     }
 
     @Override

@@ -14,6 +14,7 @@ import java.io.Serializable;
  * @des:
  */
 public interface BaseMapper<T extends BaseModel<ID>, ID extends Serializable> {
+
     int deleteByPrimaryKey(ID id);
 
     int insert(T record);
